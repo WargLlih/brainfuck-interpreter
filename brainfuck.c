@@ -17,9 +17,7 @@ typedef uint8_t bool;
 
 /**
  * @brief This function gets how many byte there are in a file.
- *
  * @param file The file in question.
- *
  * @return The file size in bytes
  */
 uint64_t fsize(const char *filename) {
@@ -40,6 +38,7 @@ uint64_t fsize(const char *filename) {
  * @param data_size is how many bytes there are in data_buffer.
  * @param instructions is a one-dimensional array that holds the program
  * instructions.
+ * @param inst_size is how many bytes there are in the instructions.
  *
  * @return TRUE if program runs successfully, FALSE otherwise.
  */
