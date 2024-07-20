@@ -171,11 +171,12 @@ int main(int argc, char *argv[]) {
     if (strncmp(argv[1], "--dbuffer", sizeof("--dbuffer"))) {
       goto PANIC;
     }
-    dbuffer_size = strtol(argv[2], NULL, 0);
-    if (dbuffer_size == 0) {
+    long n = strtol(argv[2], NULL, 0);
+    if (n <= 0) {
       fprintf(stderr, "the param <n> must be a int > 0. Got: %s\n", argv[2]);
       return EXIT_FAILURE;
     }
+    dbuffer_size = n;
     file = fopen(argv[3], "r");
     if (file == NULL) {
       fprintf(stderr, "Failed to open %s\n", argv[3]);
@@ -206,6 +207,7 @@ int main(int argc, char *argv[]) {
 
   size_t n = fread(instructions, sizeof(uint8_t), file_size, file);
   if (n != file_size) {
+    free(instructions);
     fprintf(stderr, "Error on read file\n");
     fclose(file);
     return EXIT_FAILURE;
