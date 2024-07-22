@@ -5,7 +5,7 @@ The idea is to write a simple interpreter for a simple programming language.
 
 # Usage
 ```
-./brainfuck [options] file
+./brainfuck --dbuffer <n> file
 ```
 
 ## Options
